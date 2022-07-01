@@ -44,6 +44,7 @@ pub type ino_t = u16;
 pub enum timezone {}
 impl ::Copy for timezone {}
 impl ::Clone for timezone {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> timezone {
         *self
     }
@@ -264,6 +265,7 @@ extern "C" {}
 pub enum FILE {}
 impl ::Copy for FILE {}
 impl ::Clone for FILE {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> FILE {
         *self
     }

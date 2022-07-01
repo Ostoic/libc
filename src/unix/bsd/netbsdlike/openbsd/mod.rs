@@ -611,7 +611,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for dirent {
-            fn eq(&self, other: &dirent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent) -> bool {
                 self.d_fileno == other.d_fileno
                     && self.d_off == other.d_off
                     && self.d_reclen == other.d_reclen
@@ -628,7 +630,9 @@ cfg_if! {
         impl Eq for dirent {}
 
         impl ::fmt::Debug for dirent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent")
                     .field("d_fileno", &self.d_fileno)
                     .field("d_off", &self.d_off)
@@ -661,7 +665,9 @@ cfg_if! {
         impl Eq for sockaddr_storage {}
 
         impl ::fmt::Debug for sockaddr_storage {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_storage")
                     .field("ss_len", &self.ss_len)
                     .field("ss_family", &self.ss_family)
@@ -688,7 +694,9 @@ cfg_if! {
         impl Eq for siginfo_t {}
 
         impl ::fmt::Debug for siginfo_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("siginfo_t")
                     .field("si_signo", &self.si_signo)
                     .field("si_code", &self.si_code)
@@ -708,7 +716,9 @@ cfg_if! {
         }
 
         impl PartialEq for lastlog {
-            fn eq(&self, other: &lastlog) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &lastlog) -> bool {
                 self.ll_time == other.ll_time
                     && self
                     .ll_line
@@ -726,7 +736,9 @@ cfg_if! {
         impl Eq for lastlog {}
 
         impl ::fmt::Debug for lastlog {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("lastlog")
                     .field("ll_time", &self.ll_time)
                 // FIXME: .field("ll_line", &self.ll_line)
@@ -744,7 +756,9 @@ cfg_if! {
         }
 
         impl PartialEq for utmp {
-            fn eq(&self, other: &utmp) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utmp) -> bool {
                 self.ut_time == other.ut_time
                     && self
                     .ut_line
@@ -767,7 +781,9 @@ cfg_if! {
         impl Eq for utmp {}
 
         impl ::fmt::Debug for utmp {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utmp")
                 // FIXME: .field("ut_line", &self.ut_line)
                 // FIXME: .field("ut_name", &self.ut_name)
@@ -800,7 +816,9 @@ cfg_if! {
         impl Eq for mount_info { }
 
         impl ::fmt::Debug for mount_info {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mount_info")
                 // FIXME: .field("align", &self.align)
                     .finish()
@@ -848,7 +866,9 @@ cfg_if! {
         cfg_if! {
             if #[cfg(feature = "extra_traits")] {
                 impl PartialEq for statfs {
-                    fn eq(&self, other: &statfs) -> bool {
+                    #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &statfs) -> bool {
                         self.f_flags == other.f_flags
                             && self.f_bsize == other.f_bsize
                             && self.f_iosize == other.f_iosize

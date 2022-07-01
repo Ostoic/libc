@@ -63,7 +63,9 @@ cfg_if! {
         // `fxsave64` is packed, so field access is unaligned.
         // use {x} to create temporary storage, copy field to it, and do aligned access.
         impl PartialEq for fxsave64 {
-            fn eq(&self, other: &fxsave64) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &fxsave64) -> bool {
                 return {self.fx_fcw} == {other.fx_fcw} &&
                     {self.fx_fsw} == {other.fx_fsw} &&
                     {self.fx_ftw} == {other.fx_ftw} &&
@@ -78,7 +80,9 @@ cfg_if! {
         }
         impl Eq for fxsave64 {}
         impl ::fmt::Debug for fxsave64 {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fxsave64")
                     .field("fx_fcw", &{self.fx_fcw})
                     .field("fx_fsw", &{self.fx_fsw})

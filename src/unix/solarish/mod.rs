@@ -59,6 +59,7 @@ pub type lgrp_view_t = ::c_uint;
 pub enum timezone {}
 impl ::Copy for timezone {}
 impl ::Clone for timezone {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> timezone {
         *self
     }
@@ -571,7 +572,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for utmpx {
-            fn eq(&self, other: &utmpx) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utmpx) -> bool {
                 self.ut_type == other.ut_type
                     && self.ut_pid == other.ut_pid
                     && self.ut_user == other.ut_user
@@ -593,7 +596,9 @@ cfg_if! {
         impl Eq for utmpx {}
 
         impl ::fmt::Debug for utmpx {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utmpx")
                     .field("ut_user", &self.ut_user)
                     .field("ut_id", &self.ut_id)
@@ -634,7 +639,9 @@ cfg_if! {
         }
         impl Eq for epoll_event {}
         impl ::fmt::Debug for epoll_event {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let events = self.events;
                 let u64 = self.u64;
                 f.debug_struct("epoll_event")
@@ -664,7 +671,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_un {}
         impl ::fmt::Debug for sockaddr_un {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_un")
                     .field("sun_family", &self.sun_family)
                     // FIXME: .field("sun_path", &self.sun_path)
@@ -679,7 +688,9 @@ cfg_if! {
         }
 
         impl PartialEq for utsname {
-            fn eq(&self, other: &utsname) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utsname) -> bool {
                 self.sysname
                     .iter()
                     .zip(other.sysname.iter())
@@ -708,7 +719,9 @@ cfg_if! {
         }
         impl Eq for utsname {}
         impl ::fmt::Debug for utsname {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utsname")
                     // FIXME: .field("sysname", &self.sysname)
                     // FIXME: .field("nodename", &self.nodename)
@@ -738,7 +751,9 @@ cfg_if! {
         }
         impl Eq for fd_set {}
         impl ::fmt::Debug for fd_set {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fd_set")
                     // FIXME: .field("fds_bits", &self.fds_bits)
                     .finish()
@@ -764,7 +779,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_storage {}
         impl ::fmt::Debug for sockaddr_storage {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_storage")
                     .field("ss_family", &self.ss_family)
                     .field("__ss_pad1", &self.__ss_pad1)
@@ -832,7 +849,9 @@ cfg_if! {
         }
         impl Eq for siginfo_t {}
         impl ::fmt::Debug for siginfo_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("siginfo_t")
                     .field("si_signo", &self.si_signo)
                     .field("si_code", &self.si_code)
@@ -872,7 +891,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_dl {}
         impl ::fmt::Debug for sockaddr_dl {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_dl")
                     .field("sdl_family", &self.sdl_family)
                     .field("sdl_index", &self.sdl_index)
@@ -897,7 +918,9 @@ cfg_if! {
         }
 
         impl PartialEq for sigevent {
-            fn eq(&self, other: &sigevent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &sigevent) -> bool {
                 self.sigev_notify == other.sigev_notify
                     && self.sigev_signo == other.sigev_signo
                     && self.sigev_value == other.sigev_value
@@ -908,7 +931,9 @@ cfg_if! {
         }
         impl Eq for sigevent {}
         impl ::fmt::Debug for sigevent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sigevent")
                     .field("sigev_notify", &self.sigev_notify)
                     .field("sigev_signo", &self.sigev_signo)
@@ -942,7 +967,9 @@ cfg_if! {
         impl Eq for pad128_t {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for pad128_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 unsafe {
                 f.debug_struct("pad128_t")
                     // FIXME: .field("_q", &{self._q})
@@ -973,7 +1000,9 @@ cfg_if! {
         impl Eq for upad128_t {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for upad128_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 unsafe {
                 f.debug_struct("upad128_t")
                     // FIXME: .field("_q", &{self._q})
@@ -1010,6 +1039,7 @@ struct siginfo_fault {
 }
 impl ::Copy for siginfo_fault {}
 impl ::Clone for siginfo_fault {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> Self {
         *self
     }
@@ -1023,6 +1053,7 @@ struct siginfo_cldval {
 }
 impl ::Copy for siginfo_cldval {}
 impl ::Clone for siginfo_cldval {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> Self {
         *self
     }
@@ -1037,6 +1068,7 @@ struct siginfo_killval {
 }
 impl ::Copy for siginfo_killval {}
 impl ::Clone for siginfo_killval {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> Self {
         *self
     }
@@ -1051,6 +1083,7 @@ struct siginfo_sigcld {
 }
 impl ::Copy for siginfo_sigcld {}
 impl ::Clone for siginfo_sigcld {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> Self {
         *self
     }
@@ -1065,6 +1098,7 @@ struct siginfo_kill {
 }
 impl ::Copy for siginfo_kill {}
 impl ::Clone for siginfo_kill {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> Self {
         *self
     }

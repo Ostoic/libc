@@ -56,6 +56,7 @@ fn do_ctest() {
     }
 }
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn ctest_cfg() -> ctest::TestGenerator {
     let mut cfg = ctest::TestGenerator::new();
     let libc_cfgs = [
@@ -143,6 +144,7 @@ fn process_semver_file<W: Write, P: AsRef<Path>>(output: &mut W, path: &mut Path
     path.pop();
 }
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     do_cc();
     do_ctest();

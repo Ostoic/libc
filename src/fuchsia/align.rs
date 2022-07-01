@@ -70,73 +70,79 @@ macro_rules! expand_align {
         }
 
         cfg_if! {
-            if #[cfg(feature = "extra_traits")] {
-                impl PartialEq for pthread_cond_t {
-                    fn eq(&self, other: &pthread_cond_t) -> bool {
-                        self.size
-                            .iter()
-                            .zip(other.size.iter())
-                            .all(|(a,b)| a == b)
-                    }
-                }
-                impl Eq for pthread_cond_t {}
-                impl ::fmt::Debug for pthread_cond_t {
-                    fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
-                        f.debug_struct("pthread_cond_t")
-                            // FIXME: .field("size", &self.size)
-                            .finish()
-                    }
-                }
-                impl ::hash::Hash for pthread_cond_t {
-                    fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
-                        self.size.hash(state);
-                    }
-                }
+                    if #[cfg(feature = "extra_traits")] {
+                        impl PartialEq for pthread_cond_t {
+                            fn eq(&self, other: &pthread_cond_t) -> bool {
+                                self.size
+                                    .iter()
+                                    .zip(other.size.iter())
+                                    .all(|(a,b)| a == b)
+                            }
+                        }
+                        impl Eq for pthread_cond_t {}
+                        impl ::fmt::Debug for pthread_cond_t {
+                            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+                                f.debug_struct("pthread_cond_t")
+                                    // FIXME: .field("size", &self.size)
+                                    .finish()
+                            }
+                        }
+                        impl ::hash::Hash for pthread_cond_t {
+                            fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
+                                self.size.hash(state);
+                            }
+                        }
 
-                impl PartialEq for pthread_mutex_t {
-                    fn eq(&self, other: &pthread_mutex_t) -> bool {
-                        self.size
-                            .iter()
-                            .zip(other.size.iter())
-                            .all(|(a,b)| a == b)
-                    }
-                }
-                impl Eq for pthread_mutex_t {}
-                impl ::fmt::Debug for pthread_mutex_t {
-                    fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
-                        f.debug_struct("pthread_mutex_t")
-                            // FIXME: .field("size", &self.size)
-                            .finish()
-                    }
-                }
-                impl ::hash::Hash for pthread_mutex_t {
-                    fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
-                        self.size.hash(state);
-                    }
-                }
+                        impl PartialEq for pthread_mutex_t {
+                            fn eq(&self, other: &pthread_mutex_t) -> bool {
+                                self.size
+                                    .iter()
+                                    .zip(other.size.iter())
+                                    .all(|(a,b)| a == b)
+                            }
+                        }
+                        impl Eq for pthread_mutex_t {}
+                        impl ::fmt::Debug for pthread_mutex_t {
+                            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+                                f.debug_struct("pthread_mutex_t")
+                                    // FIXME: .field("size", &self.size)
+                                    .finish()
+                            }
+                        }
+                        impl ::hash::Hash for pthread_mutex_t {
+                            fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
+                                self.size.hash(state);
+                            }
+                        }
 
-                impl PartialEq for pthread_rwlock_t {
-                    fn eq(&self, other: &pthread_rwlock_t) -> bool {
-                        self.size
-                            .iter()
-                            .zip(other.size.iter())
-                            .all(|(a,b)| a == b)
+                        impl PartialEq for pthread_rwlock_t {
+                            fn eq(&self, other: &pthread_rwlock_t) -> bool {
+                                self.size
+                                    .iter()
+                                    .zip(other.size.iter())
+                                    .all(|(a,b)| a == b)
+                            }
+                        }
+                        impl Eq for pthread_rwlock_t {}
+                        impl ::fmt::Debug for pthread_rwlock_t {
+                            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        #[cfg_attr(feature = "aggressive-inline", inline(always))]
+        fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+                                f.debug_struct("pthread_rwlock_t")
+                                    // FIXME: .field("size", &self.size)
+                                    .finish()
+                            }
+                        }
+                        impl ::hash::Hash for pthread_rwlock_t {
+                            fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
+                                self.size.hash(state);
+                            }
+                        }
                     }
                 }
-                impl Eq for pthread_rwlock_t {}
-                impl ::fmt::Debug for pthread_rwlock_t {
-                    fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
-                        f.debug_struct("pthread_rwlock_t")
-                            // FIXME: .field("size", &self.size)
-                            .finish()
-                    }
-                }
-                impl ::hash::Hash for pthread_rwlock_t {
-                    fn hash<H: ::hash::Hasher>(&self, state: &mut H) {
-                        self.size.hash(state);
-                    }
-                }
-            }
-        }
     };
 }

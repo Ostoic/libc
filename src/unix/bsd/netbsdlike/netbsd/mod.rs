@@ -838,7 +838,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for utmpx {
-            fn eq(&self, other: &utmpx) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utmpx) -> bool {
                 self.ut_type == other.ut_type
                     && self.ut_pid == other.ut_pid
                     && self.ut_name == other.ut_name
@@ -864,7 +866,9 @@ cfg_if! {
         impl Eq for utmpx {}
 
         impl ::fmt::Debug for utmpx {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utmpx")
                     .field("ut_name", &self.ut_name)
                     .field("ut_id", &self.ut_id)
@@ -898,7 +902,9 @@ cfg_if! {
         }
 
         impl PartialEq for lastlogx {
-            fn eq(&self, other: &lastlogx) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &lastlogx) -> bool {
                 self.ll_tv == other.ll_tv
                     && self.ll_line == other.ll_line
                     && self.ll_ss == other.ll_ss
@@ -913,7 +919,9 @@ cfg_if! {
         impl Eq for lastlogx {}
 
         impl ::fmt::Debug for lastlogx {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("lastlogx")
                     .field("ll_tv", &self.ll_tv)
                     .field("ll_line", &self.ll_line)
@@ -940,7 +948,9 @@ cfg_if! {
         }
         impl Eq for in_pktinfo {}
         impl ::fmt::Debug for in_pktinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("in_pktinfo")
                     .field("ipi_addr", &self.ipi_addr)
                     .field("ipi_ifindex", &self.ipi_ifindex)
@@ -955,7 +965,9 @@ cfg_if! {
         }
 
         impl PartialEq for arphdr {
-            fn eq(&self, other: &arphdr) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &arphdr) -> bool {
                 self.ar_hrd == other.ar_hrd
                     && self.ar_pro == other.ar_pro
                     && self.ar_hln == other.ar_hln
@@ -965,7 +977,9 @@ cfg_if! {
         }
         impl Eq for arphdr {}
         impl ::fmt::Debug for arphdr {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let ar_hrd = self.ar_hrd;
                 let ar_pro = self.ar_pro;
                 let ar_op = self.ar_op;
@@ -998,7 +1012,9 @@ cfg_if! {
         }
         impl Eq for in_addr {}
         impl ::fmt::Debug for in_addr {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let s_addr = self.s_addr;
                 f.debug_struct("in_addr")
                     .field("s_addr", &s_addr)
@@ -1020,7 +1036,9 @@ cfg_if! {
         }
         impl Eq for ip_mreq {}
         impl ::fmt::Debug for ip_mreq {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ip_mreq")
                     .field("imr_multiaddr", &self.imr_multiaddr)
                     .field("imr_interface", &self.imr_interface)
@@ -1045,7 +1063,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_in {}
         impl ::fmt::Debug for sockaddr_in {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_in")
                     .field("sin_len", &self.sin_len)
                     .field("sin_family", &self.sin_family)
@@ -1066,7 +1086,9 @@ cfg_if! {
         }
 
         impl PartialEq for dirent {
-            fn eq(&self, other: &dirent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent) -> bool {
                 self.d_fileno == other.d_fileno
                     && self.d_reclen == other.d_reclen
                     && self.d_namlen == other.d_namlen
@@ -1080,7 +1102,9 @@ cfg_if! {
         }
         impl Eq for dirent {}
         impl ::fmt::Debug for dirent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent")
                     .field("d_fileno", &self.d_fileno)
                     .field("d_reclen", &self.d_reclen)
@@ -1101,7 +1125,9 @@ cfg_if! {
         }
 
         impl PartialEq for statvfs {
-            fn eq(&self, other: &statvfs) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &statvfs) -> bool {
                 self.f_flag == other.f_flag
                     && self.f_bsize == other.f_bsize
                     && self.f_frsize == other.f_frsize
@@ -1138,7 +1164,9 @@ cfg_if! {
         }
         impl Eq for statvfs {}
         impl ::fmt::Debug for statvfs {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("statvfs")
                     .field("f_flag", &self.f_flag)
                     .field("f_bsize", &self.f_bsize)
@@ -1211,7 +1239,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_storage {}
         impl ::fmt::Debug for sockaddr_storage {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_storage")
                     .field("ss_len", &self.ss_len)
                     .field("ss_family", &self.ss_family)
@@ -1232,7 +1262,9 @@ cfg_if! {
         }
 
         impl PartialEq for sigevent {
-            fn eq(&self, other: &sigevent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &sigevent) -> bool {
                 self.sigev_notify == other.sigev_notify
                     && self.sigev_signo == other.sigev_signo
                     && self.sigev_value == other.sigev_value
@@ -1242,7 +1274,9 @@ cfg_if! {
         }
         impl Eq for sigevent {}
         impl ::fmt::Debug for sigevent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sigevent")
                     .field("sigev_notify", &self.sigev_notify)
                     .field("sigev_signo", &self.sigev_signo)
@@ -1276,7 +1310,9 @@ cfg_if! {
 
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_posix_spawn_fae {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 unsafe {
                     f.debug_struct("__c_anonymous_posix_fae")
                         .field("open", &self.open)
@@ -1311,7 +1347,9 @@ cfg_if! {
 
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_ifc_ifcu {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 unsafe {
                     f.debug_struct("__c_anonymous_ifc_ifcu")
                         .field("ifcu_buf", &self.ifcu_buf)
@@ -2308,7 +2346,8 @@ f! {
         *(dirp as *const ::c_int)
     }
 
-    pub fn SOCKCREDSIZE(ngrps: usize) -> usize {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))] pub
+fn SOCKCREDSIZE(ngrps: usize) -> usize {
         let ngrps = if ngrps > 0 {
             ngrps - 1
         } else {

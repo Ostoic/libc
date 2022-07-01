@@ -6,6 +6,7 @@ use unix::solarish::*;
 const PTEM: &[u8] = b"ptem\0";
 const LDTERM: &[u8] = b"ldterm\0";
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 pub unsafe fn cfmakeraw(termios: *mut ::termios) {
     (*termios).c_iflag &=
         !(IMAXBEL | IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL | IXON);

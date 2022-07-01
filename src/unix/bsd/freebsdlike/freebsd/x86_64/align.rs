@@ -97,7 +97,9 @@ cfg_if! {
         }
         impl Eq for mcontext_t {}
         impl ::fmt::Debug for mcontext_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mcontext_t")
                     .field("mc_onstack", &self.mc_onstack)
                     .field("mc_rdi", &self.mc_rdi)

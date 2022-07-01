@@ -433,7 +433,9 @@ cfg_if! {
         impl Eq for cpuid_info {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for cpuid_info {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 unsafe {
                 f.debug_struct("cpuid_info")
                     .field("eax_0", &self.eax_0)

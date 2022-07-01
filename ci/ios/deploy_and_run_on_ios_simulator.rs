@@ -148,6 +148,7 @@ impl CheckStatus for Command {
     }
 }
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {

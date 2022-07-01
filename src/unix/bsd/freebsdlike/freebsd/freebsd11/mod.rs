@@ -263,7 +263,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for statfs {
-            fn eq(&self, other: &statfs) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &statfs) -> bool {
                 self.f_version == other.f_version
                     && self.f_type == other.f_type
                     && self.f_flags == other.f_flags
@@ -296,7 +298,9 @@ cfg_if! {
         }
         impl Eq for statfs {}
         impl ::fmt::Debug for statfs {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("statfs")
                     .field("f_bsize", &self.f_bsize)
                     .field("f_iosize", &self.f_iosize)
@@ -344,7 +348,9 @@ cfg_if! {
         }
 
         impl PartialEq for dirent {
-            fn eq(&self, other: &dirent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent) -> bool {
                 self.d_fileno == other.d_fileno
                     && self.d_reclen == other.d_reclen
                     && self.d_type == other.d_type
@@ -358,7 +364,9 @@ cfg_if! {
         }
         impl Eq for dirent {}
         impl ::fmt::Debug for dirent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent")
                     .field("d_fileno", &self.d_fileno)
                     .field("d_reclen", &self.d_reclen)
@@ -379,7 +387,9 @@ cfg_if! {
         }
 
         impl PartialEq for vnstat {
-            fn eq(&self, other: &vnstat) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &vnstat) -> bool {
                 let self_vn_devname: &[::c_char] = &self.vn_devname;
                 let other_vn_devname: &[::c_char] = &other.vn_devname;
 
@@ -395,7 +405,9 @@ cfg_if! {
         }
         impl Eq for vnstat {}
         impl ::fmt::Debug for vnstat {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let self_vn_devname: &[::c_char] = &self.vn_devname;
 
                 f.debug_struct("vnstat")

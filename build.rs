@@ -2,6 +2,7 @@ use std::env;
 use std::process::Command;
 use std::str;
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     // Avoid unnecessary re-building.
     println!("cargo:rerun-if-changed=build.rs");

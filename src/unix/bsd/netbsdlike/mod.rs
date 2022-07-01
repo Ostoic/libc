@@ -17,6 +17,7 @@ pub type key_t = c_long;
 pub enum timezone {}
 impl ::Copy for timezone {}
 impl ::Clone for timezone {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> timezone {
         *self
     }
@@ -25,6 +26,7 @@ impl ::Clone for timezone {
 pub enum sem {}
 impl ::Copy for sem {}
 impl ::Clone for sem {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> sem {
         *self
     }

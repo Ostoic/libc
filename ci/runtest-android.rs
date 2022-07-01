@@ -2,6 +2,7 @@ use std::env;
 use std::process::Command;
 use std::path::{Path, PathBuf};
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     let args = env::args_os()
         .skip(1)

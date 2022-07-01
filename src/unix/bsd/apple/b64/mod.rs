@@ -69,7 +69,9 @@ cfg_if! {
         }
         impl Eq for pthread_attr_t {}
         impl ::fmt::Debug for pthread_attr_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("pthread_attr_t")
                     .field("__sig", &self.__sig)
                 // FIXME: .field("__opaque", &self.__opaque)

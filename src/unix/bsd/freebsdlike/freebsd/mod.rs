@@ -1205,7 +1205,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for utmpx {
-            fn eq(&self, other: &utmpx) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utmpx) -> bool {
                 self.ut_type == other.ut_type
                     && self.ut_tv == other.ut_tv
                     && self.ut_id == other.ut_id
@@ -1226,7 +1228,9 @@ cfg_if! {
         }
         impl Eq for utmpx {}
         impl ::fmt::Debug for utmpx {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utmpx")
                     .field("ut_type", &self.ut_type)
                     .field("ut_tv", &self.ut_tv)
@@ -1262,7 +1266,9 @@ cfg_if! {
         impl Eq for __c_anonymous_cr_pid {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_cr_pid {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("cr_pid")
                     .field("cr_pid", unsafe { &self.cr_pid })
                     .finish()
@@ -1276,7 +1282,9 @@ cfg_if! {
         }
 
         impl PartialEq for xucred {
-            fn eq(&self, other: &xucred) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &xucred) -> bool {
                 #[cfg(libc_union)]
                 let equal_cr_pid = self.cr_pid__c_anonymous_union
                     == other.cr_pid__c_anonymous_union;
@@ -1292,7 +1300,9 @@ cfg_if! {
         }
         impl Eq for xucred {}
         impl ::fmt::Debug for xucred {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let mut struct_formatter = f.debug_struct("xucred");
                 struct_formatter.field("cr_version", &self.cr_version);
                 struct_formatter.field("cr_uid", &self.cr_uid);
@@ -1337,7 +1347,9 @@ cfg_if! {
         }
         impl Eq for sockaddr_dl {}
         impl ::fmt::Debug for sockaddr_dl {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_dl")
                     .field("sdl_len", &self.sdl_len)
                     .field("sdl_family", &self.sdl_family)
@@ -1373,7 +1385,9 @@ cfg_if! {
         }
         impl Eq for mq_attr {}
         impl ::fmt::Debug for mq_attr {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mq_attr")
                     .field("mq_flags", &self.mq_flags)
                     .field("mq_maxmsg", &self.mq_maxmsg)
@@ -1392,7 +1406,9 @@ cfg_if! {
         }
 
         impl PartialEq for sigevent {
-            fn eq(&self, other: &sigevent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &sigevent) -> bool {
                 self.sigev_notify == other.sigev_notify
                     && self.sigev_signo == other.sigev_signo
                     && self.sigev_value == other.sigev_value
@@ -1402,7 +1418,9 @@ cfg_if! {
         }
         impl Eq for sigevent {}
         impl ::fmt::Debug for sigevent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sigevent")
                     .field("sigev_notify", &self.sigev_notify)
                     .field("sigev_signo", &self.sigev_signo)
@@ -1422,7 +1440,9 @@ cfg_if! {
         }
 
         impl PartialEq for ptsstat {
-            fn eq(&self, other: &ptsstat) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &ptsstat) -> bool {
                 let self_devname: &[::c_char] = &self.devname;
                 let other_devname: &[::c_char] = &other.devname;
 
@@ -1431,7 +1451,9 @@ cfg_if! {
         }
         impl Eq for ptsstat {}
         impl ::fmt::Debug for ptsstat {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let self_devname: &[::c_char] = &self.devname;
 
                 f.debug_struct("ptsstat")
@@ -1459,7 +1481,9 @@ cfg_if! {
         impl Eq for __c_anonymous_elf32_auxv_union {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_elf32_auxv_union {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("a_val")
                     .field("a_val", unsafe { &self.a_val })
                     .finish()
@@ -1481,7 +1505,9 @@ cfg_if! {
         impl Eq for Elf32_Auxinfo {}
         #[cfg(not(libc_union))]
         impl ::fmt::Debug for Elf32_Auxinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("Elf32_Auxinfo")
                     .field("a_type", &self.a_type)
                     .finish()
@@ -1489,7 +1515,9 @@ cfg_if! {
         }
         #[cfg(libc_union)]
         impl ::fmt::Debug for Elf32_Auxinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("Elf32_Auxinfo")
                     .field("a_type", &self.a_type)
                     .field("a_un", &self.a_un)
@@ -1523,7 +1551,9 @@ cfg_if! {
         impl Eq for __c_anonymous_ifr_ifru {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_ifr_ifru {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ifr_ifru")
                     .field("ifru_addr", unsafe { &self.ifru_addr })
                     .field("ifru_dstaddr", unsafe { &self.ifru_dstaddr })
@@ -1565,13 +1595,17 @@ cfg_if! {
         }
 
         impl PartialEq for ifreq {
-            fn eq(&self, other: &ifreq) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &ifreq) -> bool {
                 self.ifr_name == other.ifr_name && self.ifr_ifru == other.ifr_ifru
             }
         }
         impl Eq for ifreq {}
         impl ::fmt::Debug for ifreq {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ifreq")
                     .field("ifr_name", &self.ifr_name)
                     .field("ifr_ifru", &self.ifr_ifru)
@@ -1600,7 +1634,9 @@ cfg_if! {
 
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_ifc_ifcu {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ifc_ifcu")
                     .field("ifcu_buf", unsafe { &self.ifcu_buf })
                     .field("ifcu_req", unsafe { &self.ifcu_req })
@@ -1617,7 +1653,9 @@ cfg_if! {
         }
 
         impl PartialEq for ifstat {
-            fn eq(&self, other: &ifstat) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &ifstat) -> bool {
                 let self_ascii: &[::c_char] = &self.ascii;
                 let other_ascii: &[::c_char] = &other.ascii;
 
@@ -1626,7 +1664,9 @@ cfg_if! {
         }
         impl Eq for ifstat {}
         impl ::fmt::Debug for ifstat {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let ascii: &[::c_char] = &self.ascii;
 
                 f.debug_struct("ifstat")
@@ -1643,7 +1683,9 @@ cfg_if! {
         }
 
         impl PartialEq for ifrsskey {
-            fn eq(&self, other: &ifrsskey) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &ifrsskey) -> bool {
                 let self_ifrk_key: &[u8] = &self.ifrk_key;
                 let other_ifrk_key: &[u8] = &other.ifrk_key;
 
@@ -1656,7 +1698,9 @@ cfg_if! {
         }
         impl Eq for ifrsskey {}
         impl ::fmt::Debug for ifrsskey {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let ifrk_key: &[u8] = &self.ifrk_key;
 
                 f.debug_struct("ifrsskey")
@@ -1679,7 +1723,9 @@ cfg_if! {
         }
 
         impl PartialEq for ifdownreason {
-            fn eq(&self, other: &ifdownreason) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &ifdownreason) -> bool {
                 let self_ifdr_msg: &[::c_char] = &self.ifdr_msg;
                 let other_ifdr_msg: &[::c_char] = &other.ifdr_msg;
 
@@ -1691,7 +1737,9 @@ cfg_if! {
         }
         impl Eq for ifdownreason {}
         impl ::fmt::Debug for ifdownreason {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 let ifdr_msg: &[::c_char] = &self.ifdr_msg;
 
                 f.debug_struct("ifdownreason")
@@ -1724,7 +1772,9 @@ cfg_if! {
         impl Eq for __c_anonymous_ifi_epoch {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_ifi_epoch {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("__c_anonymous_ifi_epoch")
                     .field("tt", unsafe { &self.tt })
                     .field("ph", unsafe { &self.ph })
@@ -1754,7 +1804,9 @@ cfg_if! {
         impl Eq for __c_anonymous_ifi_lastchange {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_ifi_lastchange {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("__c_anonymous_ifi_lastchange")
                     .field("tv", unsafe { &self.tv })
                     .field("ph", unsafe { &self.ph })
@@ -1802,7 +1854,9 @@ cfg_if! {
         }
         impl Eq for if_data {}
         impl ::fmt::Debug for if_data {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("if_data")
                     .field("ifi_type", &self.ifi_type)
                     .field("ifi_physical", &self.ifi_physical)
@@ -1876,6 +1930,7 @@ pub enum dot3Vendors {
 }
 impl ::Copy for dot3Vendors {}
 impl ::Clone for dot3Vendors {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> dot3Vendors {
         *self
     }
@@ -3755,7 +3810,8 @@ f! {
         (a + 1) << 20 as ::c_int
     }
 
-    pub fn SOCKCREDSIZE(ngrps: usize) -> usize {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))] pub
+fn SOCKCREDSIZE(ngrps: usize) -> usize {
         let ngrps = if ngrps > 0 {
             ngrps - 1
         } else {
@@ -3811,7 +3867,8 @@ f! {
         s as ::c_int
     }
 
-    pub fn SOCKCRED2SIZE(ngrps: usize) -> usize {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))] pub
+fn SOCKCRED2SIZE(ngrps: usize) -> usize {
         let ngrps = if ngrps > 0 {
             ngrps - 1
         } else {

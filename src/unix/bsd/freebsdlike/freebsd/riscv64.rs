@@ -49,7 +49,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for gpregs {
-            fn eq(&self, other: &gpregs) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &gpregs) -> bool {
                 self.gp_ra == other.gp_ra &&
                 self.gp_sp == other.gp_sp &&
                 self.gp_gp == other.gp_gp &&
@@ -63,7 +65,9 @@ cfg_if! {
         }
         impl Eq for gpregs {}
         impl ::fmt::Debug for gpregs {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("gpregs")
                     .field("gp_ra", &self.gp_ra)
                     .field("gp_sp", &self.gp_sp)
@@ -91,7 +95,9 @@ cfg_if! {
             }
         }
         impl PartialEq for fpregs {
-            fn eq(&self, other: &fpregs) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &fpregs) -> bool {
                 self.fp_x == other.fp_x &&
                 self.fp_fcsr == other.fp_fcsr &&
                 self.fp_flags == other.fp_flags &&
@@ -100,7 +106,9 @@ cfg_if! {
         }
         impl Eq for fpregs {}
         impl ::fmt::Debug for fpregs {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fpregs")
                     .field("fp_x", &self.fp_x)
                     .field("fp_fcsr", &self.fp_fcsr)
@@ -128,7 +136,9 @@ cfg_if! {
         }
         impl Eq for mcontext_t {}
         impl ::fmt::Debug for mcontext_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mcontext_t")
                     .field("mc_gpregs", &self.mc_gpregs)
                     .field("mc_fpregs", &self.mc_fpregs)

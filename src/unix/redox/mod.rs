@@ -40,6 +40,7 @@ pub type time_t = ::c_long;
 pub enum timezone {}
 impl ::Copy for timezone {}
 impl ::Clone for timezone {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> timezone {
         *self
     }
@@ -1066,7 +1067,9 @@ extern "C" {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for dirent {
-            fn eq(&self, other: &dirent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent) -> bool {
                 self.d_ino == other.d_ino
                     && self.d_off == other.d_off
                     && self.d_reclen == other.d_reclen
@@ -1082,7 +1085,9 @@ cfg_if! {
         impl Eq for dirent {}
 
         impl ::fmt::Debug for dirent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent")
                     .field("d_ino", &self.d_ino)
                     .field("d_off", &self.d_off)
@@ -1117,7 +1122,9 @@ cfg_if! {
         impl Eq for sockaddr_un {}
 
         impl ::fmt::Debug for sockaddr_un {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_un")
                     .field("sun_family", &self.sun_family)
                 // FIXME: .field("sun_path", &self.sun_path)
@@ -1147,7 +1154,9 @@ cfg_if! {
         impl Eq for sockaddr_storage {}
 
         impl ::fmt::Debug for sockaddr_storage {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sockaddr_storage")
                     .field("ss_family", &self.ss_family)
                     .field("__ss_align", &self.__ss_align)
@@ -1165,7 +1174,9 @@ cfg_if! {
         }
 
         impl PartialEq for utsname {
-            fn eq(&self, other: &utsname) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utsname) -> bool {
                 self.sysname
                     .iter()
                     .zip(other.sysname.iter())
@@ -1201,7 +1212,9 @@ cfg_if! {
         impl Eq for utsname {}
 
         impl ::fmt::Debug for utsname {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utsname")
                 // FIXME: .field("sysname", &self.sysname)
                 // FIXME: .field("nodename", &self.nodename)

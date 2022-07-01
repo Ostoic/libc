@@ -201,7 +201,9 @@ cfg_if! {
         }
         impl Eq for ucontext_t {}
         impl ::fmt::Debug for ucontext_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ucontext_t")
                     .field("uc_flags", &self.uc_link)
                     .field("uc_link", &self.uc_link)

@@ -7,6 +7,7 @@ use libc::*;
 include!(concat!(env!("OUT_DIR"), "/linux_strerror_r.rs"));
 
 #[cfg(not(any(target_os = "linux", target_os = "android")))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     println!("PASSED 0 tests");
 }

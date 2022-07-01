@@ -95,7 +95,8 @@ cfg_if! {
         }
 
         impl siginfo_t {
-            unsafe fn sifields(&self) -> &sifields {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))] unsafe
+fn sifields(&self) -> &sifields {
                 &(*(self as *const siginfo_t as *const siginfo_f)).sifields
             }
 
@@ -319,7 +320,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for sysinfo {
-            fn eq(&self, other: &sysinfo) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &sysinfo) -> bool {
                 self.uptime == other.uptime
                     && self.loads == other.loads
                     && self.totalram == other.totalram
@@ -344,7 +347,9 @@ cfg_if! {
         impl Eq for sysinfo {}
 
         impl ::fmt::Debug for sysinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sysinfo")
                     .field("uptime", &self.uptime)
                     .field("loads", &self.loads)
@@ -384,7 +389,9 @@ cfg_if! {
         }
 
         impl PartialEq for utmpx {
-            fn eq(&self, other: &utmpx) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &utmpx) -> bool {
                 self.ut_type == other.ut_type
                     //&& self.__ut_pad1 == other.__ut_pad1
                     && self.ut_pid == other.ut_pid
@@ -408,7 +415,9 @@ cfg_if! {
         impl Eq for utmpx {}
 
         impl ::fmt::Debug for utmpx {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("utmpx")
                     .field("ut_type", &self.ut_type)
                     //.field("__ut_pad1", &self.__ut_pad1)

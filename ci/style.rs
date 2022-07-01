@@ -42,6 +42,7 @@ macro_rules! t {
     };
 }
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn main() {
     let arg = env::args().skip(1).next().unwrap_or(".".to_string());
 
@@ -55,6 +56,7 @@ fn main() {
     }
 }
 
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
 fn walk(path: &Path, err: &mut Errors) {
     for entry in t!(path.read_dir()).map(|e| t!(e)) {
         let path = entry.path();
@@ -179,7 +181,9 @@ fn check_style(file: &str, path: &Path, err: &mut Errors) {
 }
 
 impl State {
-    fn desc(&self) -> &str {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn desc(&self) -> &str {
         match *self {
             State::Start => "start",
             State::Imports => "import",
@@ -194,7 +198,9 @@ impl State {
 }
 
 impl Errors {
-    fn error(&mut self, path: &Path, line: usize, msg: &str) {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn error(&mut self, path: &Path, line: usize, msg: &str) {
         self.errs = true;
         println!("{}:{} - {}", path.display(), line + 1, msg);
     }

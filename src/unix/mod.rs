@@ -42,6 +42,7 @@ cfg_if! {
 pub enum DIR {}
 impl ::Copy for DIR {}
 impl ::Clone for DIR {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> DIR {
         *self
     }
@@ -391,6 +392,7 @@ cfg_if! {
 pub enum FILE {}
 impl ::Copy for FILE {}
 impl ::Clone for FILE {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> FILE {
         *self
     }

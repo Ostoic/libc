@@ -77,7 +77,9 @@ cfg_if! {
         }
         impl Eq for fpu_state {}
         impl ::fmt::Debug for fpu_state {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fpu_state")
                     .field("control", &self.control)
                     .field("status", &self.status)
@@ -118,7 +120,9 @@ cfg_if! {
         }
         impl Eq for xstate_hdr {}
         impl ::fmt::Debug for xstate_hdr {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("xstate_hdr")
                     .field("bv", &self.bv)
                     .field("xcomp_bv", &self.xcomp_bv)
@@ -135,7 +139,9 @@ cfg_if! {
         }
 
         impl PartialEq for savefpu {
-            fn eq(&self, other: &savefpu) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &savefpu) -> bool {
                 self.fp_fxsave == other.fp_fxsave
                     && self.fp_xstate == other.fp_xstate
                     && self._fp_ymm.iter().zip(other._fp_ymm.iter()).all(|(a, b)| a == b)
@@ -143,7 +149,9 @@ cfg_if! {
         }
         impl Eq for savefpu {}
         impl ::fmt::Debug for savefpu {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("savefpu")
                     .field("fp_fxsave", &self.fp_fxsave)
                     .field("fp_xstate", &self.fp_xstate)
@@ -184,7 +192,9 @@ cfg_if! {
         }
         impl Eq for mcontext_t {}
         impl ::fmt::Debug for mcontext_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mcontext_t")
                     .field("rax", &self.rax)
                     .field("rbx", &self.rbx)
@@ -243,7 +253,9 @@ cfg_if! {
         }
         impl Eq for ucontext_t {}
         impl ::fmt::Debug for ucontext_t {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("ucontext_t")
                     .field("uc_link", &self.uc_link)
                     .field("uc_sigmask", &self.uc_sigmask)

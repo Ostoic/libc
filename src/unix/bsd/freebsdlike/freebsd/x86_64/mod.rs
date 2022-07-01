@@ -115,7 +115,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for fpreg32 {
-            fn eq(&self, other: &fpreg32) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &fpreg32) -> bool {
                 self.fpr_env == other.fpr_env &&
                     self.fpr_acc == other.fpr_acc &&
                     self.fpr_ex_sw == other.fpr_ex_sw &&
@@ -127,7 +129,9 @@ cfg_if! {
         }
         impl Eq for fpreg32 {}
         impl ::fmt::Debug for fpreg32 {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fpreg32")
                     .field("fpr_env", &&self.fpr_env[..])
                     .field("fpr_acc", &self.fpr_acc)
@@ -146,7 +150,9 @@ cfg_if! {
         }
 
         impl PartialEq for fpreg {
-            fn eq(&self, other: &fpreg) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &fpreg) -> bool {
                 self.fpr_env == other.fpr_env &&
                     self.fpr_acc == other.fpr_acc &&
                     self.fpr_xacc == other.fpr_xacc &&
@@ -155,7 +161,9 @@ cfg_if! {
         }
         impl Eq for fpreg {}
         impl ::fmt::Debug for fpreg {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("fpreg")
                     .field("fpr_env", &self.fpr_env)
                     .field("fpr_acc", &self.fpr_acc)
@@ -174,7 +182,9 @@ cfg_if! {
         }
 
         impl PartialEq for xmmreg {
-            fn eq(&self, other: &xmmreg) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &xmmreg) -> bool {
                 self.xmm_env == other.xmm_env &&
                     self.xmm_acc == other.xmm_acc &&
                     self.xmm_reg == other.xmm_reg &&
@@ -186,7 +196,9 @@ cfg_if! {
         }
         impl Eq for xmmreg {}
         impl ::fmt::Debug for xmmreg {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("xmmreg")
                     .field("xmm_env", &self.xmm_env)
                     .field("xmm_acc", &self.xmm_acc)
@@ -216,7 +228,9 @@ cfg_if! {
         impl Eq for __c_anonymous_elf64_auxv_union {}
         #[cfg(libc_union)]
         impl ::fmt::Debug for __c_anonymous_elf64_auxv_union {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("a_val")
                     .field("a_val", unsafe { &self.a_val })
                     .finish()
@@ -238,7 +252,9 @@ cfg_if! {
         impl Eq for Elf64_Auxinfo {}
         #[cfg(not(libc_union))]
         impl ::fmt::Debug for Elf64_Auxinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("Elf64_Auxinfo")
                     .field("a_type", &self.a_type)
                     .finish()
@@ -246,7 +262,9 @@ cfg_if! {
         }
         #[cfg(libc_union)]
         impl ::fmt::Debug for Elf64_Auxinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("Elf64_Auxinfo")
                     .field("a_type", &self.a_type)
                     .field("a_un", &self.a_un)
@@ -272,7 +290,9 @@ cfg_if! {
         }
         impl Eq for kinfo_file {}
         impl ::fmt::Debug for kinfo_file {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("kinfo_file")
                     .field("kf_structsize", &self.kf_structsize)
                     .field("kf_type", &self.kf_type)

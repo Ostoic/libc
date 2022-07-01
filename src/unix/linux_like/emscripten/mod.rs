@@ -451,7 +451,9 @@ s_no_extra_traits! {
 cfg_if! {
     if #[cfg(feature = "extra_traits")] {
         impl PartialEq for dirent {
-            fn eq(&self, other: &dirent) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent) -> bool {
                 self.d_ino == other.d_ino
                     && self.d_off == other.d_off
                     && self.d_reclen == other.d_reclen
@@ -465,7 +467,9 @@ cfg_if! {
         }
         impl Eq for dirent {}
         impl ::fmt::Debug for dirent {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent")
                     .field("d_ino", &self.d_ino)
                     .field("d_off", &self.d_off)
@@ -486,7 +490,9 @@ cfg_if! {
         }
 
         impl PartialEq for dirent64 {
-            fn eq(&self, other: &dirent64) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &dirent64) -> bool {
                 self.d_ino == other.d_ino
                     && self.d_off == other.d_off
                     && self.d_reclen == other.d_reclen
@@ -500,7 +506,9 @@ cfg_if! {
         }
         impl Eq for dirent64 {}
         impl ::fmt::Debug for dirent64 {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("dirent64")
                     .field("d_ino", &self.d_ino)
                     .field("d_off", &self.d_off)
@@ -521,7 +529,9 @@ cfg_if! {
         }
 
         impl PartialEq for sysinfo {
-            fn eq(&self, other: &sysinfo) -> bool {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn eq(&self, other: &sysinfo) -> bool {
                 self.uptime == other.uptime
                     && self.loads == other.loads
                     && self.totalram == other.totalram
@@ -544,7 +554,9 @@ cfg_if! {
         }
         impl Eq for sysinfo {}
         impl ::fmt::Debug for sysinfo {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("sysinfo")
                     .field("uptime", &self.uptime)
                     .field("loads", &self.loads)
@@ -592,7 +604,9 @@ cfg_if! {
         }
         impl Eq for mq_attr {}
         impl ::fmt::Debug for mq_attr {
-            fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
+            #[cfg_attr(feature = "aggressive-inline", inline(always))]
+#[cfg_attr(feature = "aggressive-inline", inline(always))]
+fn fmt(&self, f: &mut ::fmt::Formatter) -> ::fmt::Result {
                 f.debug_struct("mq_attr")
                     .field("mq_flags", &self.mq_flags)
                     .field("mq_maxmsg", &self.mq_maxmsg)

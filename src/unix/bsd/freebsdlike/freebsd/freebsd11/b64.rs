@@ -26,6 +26,7 @@ pub struct stat {
 
 impl ::Copy for ::stat {}
 impl ::Clone for ::stat {
+    #[cfg_attr(feature = "aggressive-inline", inline(always))]
     fn clone(&self) -> ::stat {
         *self
     }
