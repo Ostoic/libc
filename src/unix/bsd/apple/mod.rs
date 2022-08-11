@@ -1052,7 +1052,8 @@ s_no_extra_traits! {
         pub f_fstypename: [::c_char; 16],
         pub f_mntonname: [::c_char; 1024],
         pub f_mntfromname: [::c_char; 1024],
-        pub f_reserved: [u32; 8],
+        pub f_flags_ext: u32,
+        pub f_reserved: [u32; 7],
     }
 
     pub struct dirent {
@@ -5610,6 +5611,12 @@ cfg_if! {
     if #[cfg(target_os = "macos")] {
         extern "C" {
             pub fn clock_settime(clock_id: ::clockid_t, tp: *const ::timespec) -> ::c_int;
+        }
+    }
+}
+cfg_if! {
+    if #[cfg(any(target_os = "macos", target_os = "ios"))] {
+        extern "C" {
             pub fn memmem(
                 haystack: *const ::c_void,
                 haystacklen: ::size_t,
